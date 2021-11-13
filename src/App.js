@@ -25,16 +25,16 @@ function App() {
   }
 
   function toggleComplete(id) {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id === id) {
-          return {
-            ...todo,
-            completed: !todo.completed,
-          };
-        }
-      })
-    );
+    let newtodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          completed: !todo.completed,
+        };
+      } else return todo;
+    });
+
+    setTodos(newtodos);
   }
 
   function removeTodo(id) {
@@ -43,15 +43,15 @@ function App() {
 
   return (
     <div className="App">
-     
-        <Typeography variant="h1" style={{padding:16}}>React ToDo</Typeography>
-        <TodoForm addTodo={addTodo}></TodoForm>
-        <TodoList
-          todos={todos}
-          toggleComplete={toggleComplete}
-          removeTodo={removeTodo}
-        />
-      
+      <Typeography variant="h1" style={{ padding: 16 }}>
+        React ToDo
+      </Typeography>
+      <TodoForm addTodo={addTodo}></TodoForm>
+      <TodoList
+        todos={todos}
+        toggleComplete={toggleComplete}
+        removeTodo={removeTodo}
+      />
     </div>
   );
 }
